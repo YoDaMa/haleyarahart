@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Haley Pannell — Paintings</title>
-  <meta name="description" content="Haley Pannell is a painter working in thick impasto: dense, luminous fields of color built one mark at a time.">
-  <meta name="theme-color" content="#0b0d11">
-  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Haley Pannell makes abstract paintings out of thousands of small, thick marks of paint.">
+  <meta name="theme-color" content="#f6f4ef">
+  <meta name="color-scheme" content="light">
 
-  <!-- Social previews -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Haley Pannell — Paintings">
-  <meta property="og:description" content="Thick paint, gathered one mark at a time.">
+  <meta property="og:description" content="Abstract paintings made from thousands of small, thick marks of paint.">
   <meta property="og:image" content="assets/img/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -21,218 +20,119 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Fragment+Mono&family=Nanum+Pen+Script&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
-
-  <script>(function (d) { d.classList.add('js'); if (window.WebGL2RenderingContext) d.classList.add('gl2'); })(document.documentElement);</script>
-  <script defer src="assets/js/gl.js"></script>
-  <script defer src="assets/js/palette.js"></script>
-  <script defer src="assets/js/relief.js"></script>
-  <script defer src="assets/js/hero.js"></script>
-  <script defer src="assets/js/viewer.js"></script>
   <script defer src="assets/js/main.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#works">Skip to the work</a>
-
-  <!-- The soft light that follows the cursor across the dark page -->
-  <div class="lamp" aria-hidden="true"></div>
-
-  <header class="nav" data-nav>
-    <a class="nav__brand" href="#top">Haley Pannell</a>
-    <nav class="nav__links" aria-label="Primary">
-      <a href="#works" data-nav-link>Works</a>
-      <a href="#about" data-nav-link>About</a>
-      <a href="#contact" data-nav-link>Contact</a>
+  <header class="top">
+    <a class="top__name" href="#top">Haley Pannell</a>
+    <nav class="top__nav" aria-label="Primary">
+      <a class="taped" href="#work">Work</a>
+      <a class="taped" href="#about">About</a>
+      <a class="taped" href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <!-- ============================== HERO ============================== -->
-    <section class="hero" id="top" aria-label="Introduction">
-      <canvas class="hero__canvas" aria-hidden="true"></canvas>
-
-      <p class="hero__eyebrow mono">Painter</p>
-
-      <!-- The name is rebuilt as a raised plateau in a folded paint surface
-           (assets/js/hero.js). Edit the words here; each .hero__line is one
-           line. The text stays in the page for search and screen readers. -->
-      <h1 class="hero__name">
-        <span class="hero__line"><span class="hero__word">Haley</span></span>
-        <span class="hero__line"><span class="hero__word">Pannell</span></span>
+  <main id="top">
+    <!-- Intro: the first thing people read. -->
+    <section class="intro" aria-labelledby="intro-title">
+      <h1 class="intro__title" id="intro-title">
+        <span class="intro__line">Hi, I’m Haley.</span>
+        <span class="intro__line intro__line--soft">I paint with a lot of paint.<span class="note" aria-hidden="true"><span class="note__text">they’re even thicker<br> in person</span><svg class="note__arrow" viewBox="0 0 80 72"><path pathLength="1" d="M70 4C64 22 50 34 38 40S18 52 13 64M13 64l-1.7-12.8M13 64l10.3-7.9"/></svg></span></span>
       </h1>
-
-      <div class="hero__foot">
-        <p class="hero__intro">Thick paint, gathered<br> one mark at a time.</p>
-        <a class="hero__scroll mono" href="#works"><span class="hero__scroll-line" aria-hidden="true"></span>Scroll</a>
-        <p class="hero__hint mono" aria-hidden="true">
-          <span class="hint-pointer">Move to cast light</span>
-          <span class="hint-touch">Touch to move the light</span>
-          <span class="hero__hint-dot"></span>
-        </p>
-      </div>
     </section>
 
-    <!-- ============================== WORKS ============================= -->
-    <section class="works" id="works" aria-labelledby="works-title">
-      <header class="section-head" data-reveal>
-        <span class="section-head__num mono">(01)</span>
-        <h2 class="section-head__title" id="works-title">Selected <em>works</em></h2>
-        <p class="section-head__aside mono">
-          <span class="hint-pointer">Hover a painting to rake light across its surface</span>
-          <span class="hint-touch">Tap a painting to look closer</span>
-        </p>
-      </header>
-
-      <div class="works__list">
-        <!--
-          ─── HOW TO ADD A PAINTING ───────────────────────────────────────
-          1. Put the photo in assets/img/works/ (a straight-on, evenly lit
-             photo works best — around 2000px on the long side is ideal).
-          2. Copy one <article> below, change the id, image path, width and
-             height (the photo's pixel size), alt text, title and details.
-          Everything else — numbering, color palette, light, viewer — is
-          generated automatically.
-          ────────────────────────────────────────────────────────────────
-        -->
-
-        <article class="work" id="untitled-i">
-          <figure class="work__figure">
-            <img class="work__img" src="assets/img/works/01.jpg" width="1109" height="1100"
-                 alt="Square painting in dense, sculptural impasto: thick folds and ridges of cobalt, teal and slate blue, threaded with oxblood and magenta and lit by flecks of chartreuse yellow."
-                 decoding="async">
-          </figure>
-          <div class="work__label">
-            <h3 class="work__title">Untitled I</h3>
-            <p class="work__meta">Oil on canvas</p>
-          </div>
-        </article>
-
-        <article class="work" id="untitled-ii">
-          <figure class="work__figure">
-            <img class="work__img" src="assets/img/works/02.jpg" width="840" height="1125"
-                 alt="Vertical painting covered edge to edge in small, thick dabs of paint — copper, rose, teal, sage and pearl grey — forming a shimmering, even field like fallen leaves."
-                 loading="lazy" decoding="async">
-          </figure>
-          <div class="work__label">
-            <h3 class="work__title">Untitled II</h3>
-            <p class="work__meta">Oil on canvas</p>
-          </div>
-        </article>
-
-        <article class="work" id="untitled-iii">
-          <figure class="work__figure">
-            <img class="work__img" src="assets/img/works/03.jpg" width="854" height="1125"
-                 alt="Vertical painting of countless thick strokes in silver-white, sky blue, coral and ochre, brightest at the center and warmer toward the lower corners, like sunlight through trees or falling water."
-                 loading="lazy" decoding="async">
-          </figure>
-          <div class="work__label">
-            <h3 class="work__title">Untitled III</h3>
-            <p class="work__meta">Oil on canvas</p>
-          </div>
-        </article>
-      </div>
+    <!-- The work.
+         To add a painting: put the photo in assets/img/works/, then copy one
+         <li> below and change the two image paths, width and height (the
+         photo's size in pixels), alt text, title and details. -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <h2 class="sr-only" id="work-title">Paintings</h2>
+      <ul class="work__list">
+        <li class="piece">
+          <a class="piece__link" href="assets/img/works/01.jpg">
+            <img src="assets/img/works/01.jpg" width="1109" height="1100"
+                 alt="Square painting in thick, crumpled folds of paint: cobalt, teal and slate blue, threaded with deep red and magenta, with flecks of yellow-green.">
+          </a>
+          <h3 class="piece__title"><span class="tape">Untitled I</span></h3>
+          <p class="piece__meta">Oil on canvas</p>
+        </li>
+        <li class="piece">
+          <a class="piece__link" href="assets/img/works/02.jpg">
+            <img src="assets/img/works/02.jpg" width="840" height="1125"
+                 alt="Tall painting covered edge to edge in small, thick dabs of copper, rose, teal, sage and pearl grey, like a field of fallen leaves.">
+          </a>
+          <h3 class="piece__title"><span class="tape">Untitled II</span></h3>
+          <p class="piece__meta">Oil on canvas</p>
+        </li>
+        <li class="piece">
+          <a class="piece__link" href="assets/img/works/03.jpg">
+            <img src="assets/img/works/03.jpg" width="854" height="1125"
+                 alt="Tall painting of countless thick strokes in silver-white, sky blue, coral and ochre, brightest in the middle, like sunlight through trees.">
+          </a>
+          <h3 class="piece__title"><span class="tape">Untitled III</span></h3>
+          <p class="piece__meta">Oil on canvas</p>
+        </li>
+      </ul>
     </section>
 
-    <!-- ============================== ABOUT ============================= -->
     <section class="about" id="about" aria-labelledby="about-title">
-      <header class="section-head" data-reveal>
-        <span class="section-head__num mono">(02)</span>
-        <h2 class="section-head__title" id="about-title">About</h2>
-      </header>
-
-      <div class="about__grid">
-        <!-- A close-up of one painting. data-crop is the region to show:
-             left, top, width, height — as fractions of the photo. -->
-        <figure class="detail" data-reveal>
-          <div class="detail__frame" data-crop="0.30 0.27 0.34 0.34">
-            <img class="detail__img" src="assets/img/works/01.jpg" width="1109" height="1100" alt="" loading="lazy" decoding="async">
+      <figure class="snapshot">
+        <div class="snapshot__photo">
+          <div class="snapshot__crop">
+            <img src="assets/img/works/01.jpg" width="1109" height="1100" loading="lazy"
+                 alt="Close-up of the paint surface: thick ridges and folds of blue, green, red and yellow.">
           </div>
-          <figcaption class="detail__caption mono">
-            <span class="detail__inset" aria-hidden="true"><img src="assets/img/works/01.jpg" alt=""><i></i></span>
-            <span>Detail — <em>Untitled I</em></span>
-          </figcaption>
-        </figure>
-
-        <div class="about__text">
-          <p class="about__lead" data-reveal>Paintings built one mark at a time — thousands of thick, deliberate touches of paint gathering into fields of color and light.</p>
-          <div class="about__body" data-reveal>
-            <p>Haley Pannell works in heavy impasto, layering paint until the surface becomes a terrain of its own: ridges, folds and crusts that catch the light and change as you move around them.</p>
-            <p>Up close, every mark stays distinct — a fleck of cobalt, a fold of crimson, a curl of silver. From across the room they begin to merge into something closer to weather: foliage, water, a reef, light falling through trees.</p>
-            <p>There is no single place for the eye to land. The paintings are made to be wandered, and to reward the slow look.</p>
-          </div>
+          <span class="snapshot__tape snapshot__tape--left" aria-hidden="true"></span>
+          <span class="snapshot__tape snapshot__tape--right" aria-hidden="true"></span>
         </div>
+        <figcaption class="snapshot__note">up close, Untitled I</figcaption>
+      </figure>
+
+      <div class="about__text">
+        <h2 class="about__title" id="about-title">About</h2>
+        <p class="about__lead">I make abstract paintings out of thousands of small, thick marks of paint, put down one at a time until the whole canvas is covered.</p>
+        <p>Up close you can see every mark — a fleck of blue, a fold of red, a curl of silver. From across the room they blend into something more like weather: leaves, water, a reef, sun through trees.</p>
+        <p>The surface changes as you walk past it, so the paintings are best seen in person.</p>
       </div>
     </section>
 
-    <!-- ============================= CONTACT ============================ -->
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <header class="section-head" data-reveal>
-        <span class="section-head__num mono">(03)</span>
-        <h2 class="section-head__title" id="contact-title">Contact</h2>
-      </header>
-
-      <div class="contact__body">
-        <p class="contact__lede" data-reveal>For available work, commissions and studio visits, write to</p>
-        <!-- TODO: replace hello@example.com (both places on this line) with the real
-             address. The "Inquire" links on each painting use it too. -->
-        <a class="contact__email" href="mailto:hello@example.com" data-email data-reveal>hello@<wbr>example.com</a>
-        <ul class="contact__links mono" data-reveal>
-          <!-- Uncomment and edit to add Instagram or other links:
-          <li><a href="https://www.instagram.com/your-handle/" rel="me noopener" target="_blank">Instagram ↗</a></li>
-          -->
-          <li><a href="#works">Back to the work ↑</a></li>
-        </ul>
-      </div>
+      <h2 class="contact__title" id="contact-title">Say hello.</h2>
+      <p class="contact__lede">For available work, commissions or a studio visit, email me at</p>
+      <!-- TODO: replace hello@example.com (in both places on the next line) with the real address. -->
+      <a class="contact__email taped" href="mailto:hello@example.com">hello@example.com</a>
+      <!-- To add Instagram, uncomment and edit:
+      <p class="contact__more"><a class="taped" href="https://www.instagram.com/your-handle/" rel="me noopener" target="_blank">Instagram ↗</a></p>
+      -->
     </section>
   </main>
 
-  <footer class="footer mono">
+  <footer class="foot">
     <span>© <span data-year>2026</span> Haley Pannell</span>
-    <span>All images © the artist</span>
-    <a href="#top">Back to top ↑</a>
+    <a class="taped" href="#top">Back to top ↑</a>
   </footer>
 
-  <!-- ============================== VIEWER ============================== -->
-  <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-labelledby="viewer-title" hidden>
-    <div class="viewer__stage" data-stage>
-      <img class="viewer__img" alt="">
-      <canvas class="viewer__canvas" aria-hidden="true"></canvas>
-    </div>
-
+  <!-- Full-screen view of one painting (opened by assets/js/main.js). -->
+  <dialog class="viewer" aria-label="Painting viewer">
     <div class="viewer__bar">
-      <span class="viewer__count mono" data-count>01 / 03</span>
-      <div class="viewer__tools">
-        <button class="vbtn mono" type="button" data-action="light" aria-pressed="true"><span class="vbtn__dot" aria-hidden="true"></span>Light</button>
-        <button class="vbtn mono" type="button" data-action="zoom" aria-pressed="false">Zoom</button>
-        <button class="vbtn vbtn--close" type="button" data-action="close" aria-label="Close viewer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
-        </button>
+      <span class="viewer__count" data-count></span>
+      <button class="viewer__btn" type="button" data-close>Close <span aria-hidden="true">×</span></button>
+    </div>
+    <div class="viewer__stage" data-stage>
+      <img class="viewer__img" alt="" data-img>
+    </div>
+    <div class="viewer__bar viewer__bar--bottom">
+      <div>
+        <p class="viewer__title"><span class="tape" data-title></span></p>
+        <p class="viewer__meta" data-meta></p>
+      </div>
+      <div class="viewer__nav">
+        <button class="viewer__btn" type="button" data-prev><span aria-hidden="true">←</span> Prev</button>
+        <button class="viewer__btn" type="button" data-next>Next <span aria-hidden="true">→</span></button>
       </div>
     </div>
-
-    <button class="viewer__nav viewer__nav--prev" type="button" data-action="prev" aria-label="Previous painting">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8"/></svg>
-    </button>
-    <button class="viewer__nav viewer__nav--next" type="button" data-action="next" aria-label="Next painting">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8"/></svg>
-    </button>
-
-    <div class="viewer__caption">
-      <div class="viewer__caption-text">
-        <h2 class="viewer__title" id="viewer-title" data-title></h2>
-        <p class="viewer__meta mono" data-meta></p>
-      </div>
-      <div class="palette palette--viewer" data-palette aria-hidden="true"></div>
-      <a class="viewer__inquire mono" href="#" data-inquire>Inquire <span aria-hidden="true">→</span></a>
-    </div>
-
-    <p class="viewer__hint mono" data-hint aria-hidden="true">
-      <span class="hint-pointer">Move to rake light · Scroll to zoom · ← → to browse</span>
-      <span class="hint-touch">Drag to move the light · Pinch to zoom · Swipe to browse</span>
-    </p>
-  </div>
-
-  <noscript><style>.hero__name{color:var(--pearl)!important}</style></noscript>
+  </dialog>
 </body>
 </html>
