@@ -75,8 +75,7 @@
   }, (60 - new Date().getSeconds()) * 1000);
 
   /* -------------------------------------------------------- the night sky */
-  /* Every so often a satellite drifts across behind the sheet, trailing a
-     dashed line, or a meteor streaks past. One of each at a time. */
+  /* Every so often a meteor streaks past behind the sheet. */
 
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!still && 'animate' in Element.prototype) {
@@ -91,43 +90,6 @@
         if (document.hidden) { setTimeout(run, 5000); return; } // wait for the tab to be seen
         fn();
       }, rand(min, max) * 1000);
-    };
-
-    var SATELLITE = '<svg class="sat__body" viewBox="0 0 30 14">' +
-      '<path d="M1.5 4h8v6h-8zM5.5 4v6M20.5 4h8v6h-8zM24.5 4v6M9.5 7h2M18.5 7h2M11.5 4.5h7v5h-7zM15 4.5V2.5"/>' +
-      '<circle class="sat__light" cx="15" cy="1.5" r="1"/></svg>';
-
-    var satellite = function () {
-      var W = window.innerWidth, H = window.innerHeight;
-      var ltr = Math.random() < 0.65;
-      var x0 = ltr ? -40 : W + 40, y0 = H * rand(0.12, 0.75);
-      var dx = (ltr ? W + 40 : -40) - x0, dy = H * rand(-0.25, 0.25);
-      var dist = Math.hypot(dx, dy) + 240;               // let the trail leave too
-      var ang = Math.atan2(dy, dx) * 180 / Math.PI;
-      var time = dist / rand(26, 36) * 1000;              // about 30px a second
-
-      var el = document.createElement('div');
-      el.className = 'sat';
-      el.innerHTML = '<i class="sat__trail"></i>' + SATELLITE;
-      el.style.left = x0 + 'px';
-      el.style.top = y0 + 'px';
-      el.lastChild.style.transform = 'rotate(' + (-ang) + 'deg)'; // keep it upright
-      sky.appendChild(el);
-
-      var heading = 'rotate(' + ang + 'deg) ';
-      el.animate([
-        { transform: heading + 'translateX(0)' },
-        { transform: heading + 'translateX(' + dist + 'px)' }
-      ], { duration: time, easing: 'linear' }).onfinish = function () {
-        el.remove();
-        later(satellite, 50, 110);
-      };
-      // slide the dashes backward at the same speed, so the trail stays put
-      // on the sheet and fades out behind the satellite
-      el.firstChild.animate([
-        { backgroundPosition: '0 0' },
-        { backgroundPosition: -dist + 'px 0' }
-      ], { duration: time, easing: 'linear' });
     };
 
     var meteor = function () {
@@ -153,7 +115,6 @@
       };
     };
 
-    later(satellite, 2, 5);
     later(meteor, 8, 14);
   }
 

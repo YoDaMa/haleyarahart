@@ -41,12 +41,9 @@ copy only labels things. It never describes the work.
     in the menu and choose Copy Link.
   - Ordinary visits always start at the top: reloading doesn't jump back
     down, and clicking the menu doesn't change the address.
-- **Motion, kept small:** the dashed leader lines creep along a pixel at a
-  time, a painting's FIG line runs while you hover it, and the clock's
-  colon blinks. Every so often a line-drawn satellite drifts across behind
-  the content, leaving a fading dashed trail, and now and then a shooting
-  star streaks past. All of it switches off when a visitor has reduced
-  motion turned on.
+- **Motion, kept small:** the clock's colon blinks, and now and then a
+  shooting star streaks past behind the content. Both switch off when a
+  visitor has reduced motion turned on.
 - **Halftone:** a printed halftone screen lies under everything: dark
   1-bit dots on a 9-point grid, sized by slowly drifting clouds. Small dots
   are single pixels and crosses; the biggest are stepped circles that just
