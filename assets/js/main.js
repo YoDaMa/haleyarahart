@@ -9,6 +9,21 @@
   function each(selector, fn) { Array.prototype.forEach.call(document.querySelectorAll(selector), fn); }
   var TRANSPARENT = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
+  // Menu links scroll to their section without leaving #info etc. in the
+  // address bar, so a reload or a saved link opens at the top of the page.
+  each('a[href^="#"]', function (a) {
+    var id = a.getAttribute('href').slice(1);
+    if (!id || /^untitled-/.test(id)) return;
+    a.addEventListener('click', function (e) {
+      var target = document.getElementById(id);
+      if (!target || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      if (id === 'top') window.scrollTo({ top: 0 }); else target.scrollIntoView({ block: 'start' });
+      if (target.tabIndex < 0 && !/^(A|BUTTON|INPUT)$/.test(target.tagName)) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+    });
+  });
+
   function decoded(im) { return im.decode ? im.decode().catch(function () {}) : Promise.resolve(); }
 
   /* ----------------------------------------------------------- the sheet */

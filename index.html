@@ -45,7 +45,14 @@
   <link rel="preload" href="assets/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/courier-prime.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    // Always start at the top: no jumping back to where a reload left off,
+    // and no landing mid-page from a section link (#info, #contact) left in
+    // the address bar. Links to a painting (#untitled-iv) still open it.
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (location.hash && !/^#untitled-/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+  </script>
   <script defer src="assets/js/main.js"></script>
 </head>
 <body>
