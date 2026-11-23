@@ -30,7 +30,8 @@
 *::after { box-sizing: border-box; }
 
 html {
-  background: var(--blue);
+  background: var(--blue) url("../img/grain.png") repeat;
+  background-size: 128px;
   color-scheme: dark;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -41,8 +42,6 @@ html:has(dialog[open]) { overflow: hidden; }
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--blue) url("../img/grain.png") repeat;
-  background-size: 128px;
   color: var(--white);
   font-family: var(--mono);
   font-size: 0.9375rem;
@@ -79,11 +78,21 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   white-space: nowrap;
 }
 .row h2 { font: inherit; }
-.row > i {
+.row > i,
+.piece__fig i {
+  position: relative;
   flex: 1;
   min-width: 12px;
-  border-top: 1px dashed var(--white);
+  height: 1px;
+  overflow: hidden;
   transform-origin: 0 50%;
+}
+.row > i::before,
+.piece__fig i::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 -5px;
+  background: repeating-linear-gradient(90deg, var(--dash-c, var(--white)) 0 3px, transparent 3px 5px);
 }
 
 /* ---------------------------------------------------------- Title block */
@@ -253,7 +262,7 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   text-transform: uppercase;
 }
 .piece__fig::before { content: "Fig. " counter(fig, decimal-leading-zero); }
-.piece__fig i { flex: 1; border-top: var(--dash); }
+.piece__fig i { --dash-c: var(--rule); }
 .piece__title {
   margin-top: 10px;
   font-family: var(--sans);
@@ -483,6 +492,80 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 @keyframes draw { from { transform: scaleX(0); } }
 @keyframes rise { from { opacity: 0; translate: 0 0.12em; } }
 @keyframes fade-in { from { opacity: 0; } }
+
+/* The leader lines creep along a pixel at a time; a painting's own line
+   runs while you look at it. The clock's colon blinks. */
+@media (prefers-reduced-motion: no-preference) {
+  .row > i::before { animation: march 1s steps(5) infinite; }
+  .piece__fig i::before { animation: march 0.5s steps(5) infinite paused; }
+  .piece:hover .piece__fig i::before { animation-play-state: running; }
+  .colon { animation: blink 2s steps(1) infinite; }
+}
+@keyframes march { to { transform: translateX(5px); } }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ------------------------------------------------------------ Night sky */
+/* Now and then a satellite drifts across behind the sheet, leaving a dashed
+   trail, or a meteor streaks past. Added by assets/js/main.js. */
+
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: -1;                       /* behind everything on the sheet */
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+.sat {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.sat__body {
+  position: absolute;
+  left: -15px;
+  top: -7px;
+  width: 30px;
+  height: 14px;
+  overflow: visible;
+  fill: none;
+  stroke: rgb(255 255 255 / 0.9);
+  stroke-width: 1;
+}
+.sat__light {
+  fill: var(--white);
+  stroke: none;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.sat__trail {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 200px;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.75) 0 3px, transparent 3px 5px);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000);
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+.meteor {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, rgb(255 255 255 / 0), rgb(255 255 255 / 0.9));
+  transform-origin: 100% 50%;
+  opacity: 0;
+}
+.meteor::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: 0 0 6px 1px rgb(255 255 255 / 0.55);
+}
+@keyframes pulse { 50% { opacity: 0.15; } }
 
 /* ----------------------------------------------------------- Responsive */
 

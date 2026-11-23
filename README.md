@@ -24,6 +24,12 @@ copy only labels things. It never describes the work.
 - **Works** hang at one shared height inside corner brackets, numbered
   FIG. 01, 02, 03. Click one to see it full screen. Use the arrow keys or
   swipe to browse, and Esc to close.
+- **Motion, kept small:** the dashed leader lines creep along a pixel at a
+  time, a painting's FIG line runs while you hover it, and the clock's
+  colon blinks. Every so often a line-drawn satellite drifts across behind
+  the content, leaving a fading dashed trail, and now and then a shooting
+  star streaks past. All of it switches off when a visitor has reduced
+  motion turned on.
 - **Detail A** is a close-up of one painting, with a small key showing
   where it comes from.
 
@@ -78,7 +84,7 @@ branch instead, go to **Settings → Pages**, pick that branch, and choose
 ```
 index.html            all the content
 assets/css/style.css  the design
-assets/js/main.js     live date and time, counts, full-screen viewer
+assets/js/main.js     live date and time, moon phase, counts, sky sprites, viewer
 assets/img/works/     the paintings
 assets/img/grain.png  the faint print texture on the blue
 assets/img/og.jpg     preview image for links shared on social media
