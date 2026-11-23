@@ -125,12 +125,39 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 
 .tb__meta {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
+  align-items: center;
+  gap: 22px;
 }
-.tb__meta div { display: flex; gap: 14px; }
-.tb__meta dt { width: 6ch; color: var(--dim); }
+.tb__meta dl div { display: flex; gap: 14px; }
+.tb__meta dt { color: var(--dim); }
+
+/* Moonphase dial: a starry disc carrying two moons turns half a revolution
+   each lunar month behind an arched window; the two humps hide the moon
+   that isn't showing. */
+.moon {
+  flex: none;
+  width: 58px;
+  height: auto;
+  overflow: visible;
+}
+.moon__sky { fill: #1d3672; }
+.moon__stars { fill: rgb(255 255 255 / 0.8); }
+.moon__hump,
+.moon__line {
+  stroke: rgb(255 255 255 / 0.85);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.moon__hump { fill: var(--blue); }
+.moon__line { fill: none; }
+.moon__disc {
+  transform-box: view-box;
+  transform-origin: 32px 30px;
+  transform: rotate(var(--moon-turn, -90deg));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .moon__disc { transition: transform 2.4s cubic-bezier(0.3, 0, 0.1, 1) 0.4s; }
+}
 
 .tb__nav {
   display: flex;
@@ -469,8 +496,19 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 }
 
 @media (max-width: 760px) {
-  .tb { grid-template-columns: minmax(0, 1fr) auto; }
-  .tb__meta { display: none; }
+  .tb {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "brand nav" "meta meta";
+  }
+  .tb__brand { grid-area: brand; }
+  .tb__nav { grid-area: nav; }
+  .tb__cell.tb__meta {
+    grid-area: meta;
+    justify-content: space-between;
+    padding-block: 10px;
+    border-left: 0;
+    border-top: var(--dash);
+  }
 }
 
 @media (max-width: 600px) {

@@ -32,10 +32,31 @@
         <span class="tb__name" aria-hidden="true">HP</span>
         <span class="tb__sub" aria-hidden="true">Index of paintings</span>
       </a>
-      <dl class="tb__cell tb__meta">
-        <div><dt>Works</dt><dd data-works>03</dd></div>
-        <div><dt>Time</dt><dd><time data-time>HH:MM</time></dd></div>
-      </dl>
+      <div class="tb__cell tb__meta">
+        <!-- Moonphase dial, set to today's moon by assets/js/main.js -->
+        <svg class="moon" viewBox="0 0 64 32" role="img" aria-labelledby="moon-label" data-moon>
+          <title id="moon-label">Moon phase</title>
+          <defs>
+            <clipPath id="moon-window"><path d="M5 30a27 27 0 0 1 54 0z"/></clipPath>
+            <radialGradient id="moon-sphere" cx="38%" cy="34%" r="70%">
+              <stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#b9c3d8"/>
+            </radialGradient>
+          </defs>
+          <g clip-path="url(#moon-window)">
+            <g class="moon__disc">
+              <circle class="moon__sky" cx="32" cy="30" r="27"/>
+              <g class="moon__stars"><circle cx="29.3" cy="21.1" r="0.7"/><circle cx="28.7" cy="55.0" r="0.45"/><circle cx="44.9" cy="36.4" r="0.55"/><circle cx="26.1" cy="16.5" r="0.55"/><circle cx="46.0" cy="21.0" r="0.45"/><circle cx="42.4" cy="22.6" r="0.45"/><circle cx="17.0" cy="48.0" r="0.7"/><circle cx="21.8" cy="26.6" r="0.45"/><circle cx="25.5" cy="20.9" r="0.35"/><circle cx="51.9" cy="33.5" r="0.45"/><circle cx="44.2" cy="28.3" r="0.55"/><circle cx="50.3" cy="22.0" r="0.7"/><circle cx="10.4" cy="18.4" r="0.45"/><circle cx="41.6" cy="36.5" r="0.55"/><circle cx="38.5" cy="47.7" r="0.55"/><circle cx="11.4" cy="32.0" r="0.45"/><circle cx="46.9" cy="41.2" r="0.35"/><circle cx="22.6" cy="35.8" r="0.7"/><circle cx="14.1" cy="39.1" r="0.4"/><circle cx="13.5" cy="35.3" r="0.55"/><circle cx="19.1" cy="35.0" r="0.55"/><circle cx="9.6" cy="41.7" r="0.45"/><circle cx="20.9" cy="44.2" r="0.7"/><circle cx="31.3" cy="48.0" r="0.55"/><circle cx="35.2" cy="38.4" r="0.35"/><circle cx="45.1" cy="24.4" r="0.45"/><circle cx="51.5" cy="47.0" r="0.4"/><circle cx="55.0" cy="30.3" r="0.45"/><circle cx="21.3" cy="21.8" r="0.45"/><circle cx="33.0" cy="15.6" r="0.45"/><circle cx="37.3" cy="27.1" r="0.4"/><circle cx="42.2" cy="14.3" r="0.45"/><circle cx="16.4" cy="24.5" r="0.45"/><circle cx="28.2" cy="25.2" r="0.55"/><circle cx="31.4" cy="40.4" r="0.55"/><circle cx="37.5" cy="34.4" r="0.45"/><circle cx="43.0" cy="50.7" r="0.35"/><circle cx="35.7" cy="51.0" r="0.45"/><circle cx="25.1" cy="7.4" r="0.7"/><circle cx="54.4" cy="39.2" r="0.7"/><circle cx="52.8" cy="18.7" r="0.35"/><circle cx="49.1" cy="27.9" r="0.35"/><circle cx="34.1" cy="22.5" r="0.45"/><circle cx="46.4" cy="49.8" r="0.55"/><circle cx="28.3" cy="7.0" r="0.35"/><circle cx="52.4" cy="15.4" r="0.35"/></g>
+              <circle cx="32" cy="14.5" r="9.5" fill="url(#moon-sphere)"/>
+              <circle cx="32" cy="45.5" r="9.5" fill="url(#moon-sphere)"/>
+            </g>
+          </g>
+          <path class="moon__hump" d="M5 30a11.5 11.5 0 0 1 23 0zM36 30a11.5 11.5 0 0 1 23 0z"/>
+          <path class="moon__line" d="M5 30a27 27 0 0 1 54 0M28 30h8"/>
+        </svg>
+        <dl>
+          <div><dt>Time</dt><dd><time data-time>HH:MM</time></dd></div>
+        </dl>
+      </div>
       <nav class="tb__cell tb__nav" aria-label="Primary">
         <a href="#work"><span aria-hidden="true">↘</span> Work</a>
         <a href="#info"><span aria-hidden="true">↘</span> Info</a>

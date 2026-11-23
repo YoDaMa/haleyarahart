@@ -12,8 +12,11 @@ The page is laid out like a blueprint sheet: one cobalt field, white line
 work, typed labels. The paintings are the only color on the page, and the
 copy only labels things. It never describes the work.
 
-- **Title block:** a dashed box at the top with the HP mark, the number of
-  works, the visitor's local time, and the menu.
+- **Title block:** a dashed box at the top with the HP mark, a small
+  moonphase dial, the visitor's local time, and the menu. The dial works
+  like a watch's: a starry disc with two moons turns half a revolution each
+  lunar month, and it turns to today's phase when the page loads. Hover it
+  to see the phase name.
 - **Label rows:** `LABEL - - - - LABEL - - - - LABEL` lines head each
   section. The date in the first row is the visitor's own date.
 - **The name** is set to fill the width of the sheet exactly, at any screen

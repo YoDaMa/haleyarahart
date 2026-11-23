@@ -23,8 +23,30 @@
     each('[data-date]', function (el) { el.textContent = date; el.dateTime = now.toISOString().slice(0, 10); });
     each('[data-time]', function (el) { el.textContent = time; });
   }
+  /* The moonphase dial. The disc carries two moons and makes half a turn
+     per lunar month (29.53 days), counted from a known new moon. */
+  var moon = document.querySelector('[data-moon]');
+  var SYNODIC = 29.530588853, NEW_MOON = Date.UTC(2000, 0, 6, 18, 14);
+  var PHASES = ['New moon', 'Waxing crescent', 'First quarter', 'Waxing gibbous',
+    'Full moon', 'Waning gibbous', 'Last quarter', 'Waning crescent'];
+
+  function setMoon() {
+    if (!moon) return;
+    var p = ((Date.now() - NEW_MOON) / 86400000 / SYNODIC) % 1;
+    if (p < 0) p += 1;
+    moon.style.setProperty('--moon-turn', (p * 180 - 90).toFixed(2) + 'deg');
+    var lit = Math.round((1 - Math.cos(2 * Math.PI * p)) / 2 * 100);
+    var label = moon.querySelector('title');
+    if (label) label.textContent = PHASES[Math.round(p * 8) % 8] + ', ' + lit + '% lit';
+  }
+
   tick();
-  setTimeout(function () { tick(); setInterval(tick, 60000); }, (60 - new Date().getSeconds()) * 1000);
+  // after the first paint, so the disc turns into place
+  requestAnimationFrame(function () { requestAnimationFrame(setMoon); });
+  setTimeout(function () {
+    tick();
+    setInterval(function () { tick(); setMoon(); }, 60000);
+  }, (60 - new Date().getSeconds()) * 1000);
 
   /* ---------------------------------------------------------- the viewer */
 
