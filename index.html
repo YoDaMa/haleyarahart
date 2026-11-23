@@ -44,7 +44,7 @@
 
   <link rel="preload" href="assets/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/courier-prime.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261123">
   <script>
     document.documentElement.classList.add('js');
     // Start at the top: no jumping back to where a reload left off, and menu
@@ -53,8 +53,24 @@
     // opens in the viewer, and #work, #info and #contact open that section.
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
     if (location.hash && !/^#(untitled-[\w-]+|work|info|contact)$/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+    // Safari can restore the old position on reload anyway, so say it twice
+    if (!location.hash) {
+      var toTop = function () { window.scrollTo(0, 0); };
+      document.addEventListener('DOMContentLoaded', toTop);
+      window.addEventListener('load', function () { toTop(); setTimeout(toTop, 0); });
+      window.addEventListener('pageshow', function (e) { if (e.persisted) toTop(); });
+    } else if (/^#(work|info|contact)$/.test(location.hash)) {
+      // a shared section link: the browser's own (smooth) jump can stall on
+      // phones while the page is still loading, so jump there instantly
+      var toSection = function () {
+        var el = document.getElementById(location.hash.slice(1));
+        if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
+      };
+      document.addEventListener('DOMContentLoaded', toSection);
+      window.addEventListener('load', function () { toSection(); setTimeout(toSection, 0); });
+    }
   </script>
-  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/main.js?v=20261123"></script>
 </head>
 <body>
   <a class="skip" href="#work">Skip to the work</a>
