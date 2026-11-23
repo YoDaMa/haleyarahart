@@ -56,9 +56,10 @@ Everything a visitor reads is in **`index.html`**.
 
 | What | Where |
 | --- | --- |
-| Painting titles and details | each `<li class="piece">`. **The titles (Untitled I–IX) and "Oil on canvas" are placeholders**: add the real title, medium, size and year, e.g. `Oil on canvas, 24 × 30 in, 2025`. |
-| Info text | `.info__text`, and the rows of the `.spec` table. Examples for location, Instagram and a CV are in a comment. |
-| Email | **It's a placeholder (`hello@example.com`).** Replace it in the Info table and in the Contact section, two copies on each line. |
+| Painting titles and details | each `<li class="piece">`. **The titles (Untitled I–IX) are placeholders.** Each work's details read "Mixed media on canvas"; add size and year if you like, e.g. `Mixed media on canvas, 24 × 30 in, 2025`. |
+| About text | `.info__text`, and the rows of the `.spec` table (practice, medium, location, contact). A CV row example is in a comment. |
+| Email, phone, Instagram | the Info table and the Contact section (both places). |
+| Taglines | the first row above the name (`row--tags`). |
 
 Figure numbers, the "Fig. 01–09" range and the works count update
 themselves.

@@ -420,6 +420,11 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   line-height: 1.55;
   text-wrap: pretty;
 }
+.info__note {
+  max-width: 46ch;
+  margin-top: 16px;
+  color: var(--dim);
+}
 .spec {
   margin-top: clamp(28px, 3vw, 44px);
   border-top: var(--dash);
@@ -457,6 +462,17 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   overflow-wrap: anywhere;
 }
 .contact__email:hover { text-decoration-style: dashed; }
+.contact__more {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  margin: clamp(20px, 2.4vw, 32px) 0 0;
+  padding: 0;
+  list-style: none;
+  text-transform: uppercase;
+}
+.contact__more a { display: inline-block; padding: 4px 0; text-underline-offset: 0.25em; }
+.contact__more a:hover { text-decoration-style: dashed; }
 
 /* --------------------------------------------------------------- Footer */
 
@@ -706,6 +722,9 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 
 @media (max-width: 600px) {
   body { font-size: 0.875rem; }
+  .row--tags { flex-wrap: wrap; row-gap: 8px; white-space: normal; }
+  .row--tags > span:first-child { flex-basis: 100%; }
+  .row--tags > i:first-of-type { display: none; }
   .row { gap: 10px; font-size: 0.8125rem; }
   .tb__cell { padding: 12px 14px; }
   .hero__name { font-size: calc(100cqw / 3.0228); white-space: normal; }
@@ -720,6 +739,10 @@ h1, h2, h3, p, dl, dd { margin: 0; }
     width: min(100vw - 2 * var(--gutter) - 24px, (100vh - 236px) * var(--ar, 0.8));
     width: min(100vw - 2 * var(--gutter) - 24px, (100dvh - 236px) * var(--ar, 0.8));
   }
+}
+
+@media (max-width: 380px) {
+  .row { flex-wrap: wrap; row-gap: 8px; }
 }
 
 /* ---------------------------------------------------------------- Print */
