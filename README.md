@@ -31,9 +31,16 @@ copy only labels things. It never describes the work.
   surface: the enlarged photo follows the mouse, and on a phone you drag
   it. Arrow keys or a swipe browse, and Esc steps out of the zoom, then
   closes. The Back button closes the viewer too.
-- **A link to each painting:** while a painting is open, the address bar
-  shows its own link, for example `…/haleyarahart/#untitled-iv`. Sending
-  that link opens the site on that painting.
+- **Sharing:** every painting and section has its own link.
+  - A painting: open it and press **Share**. On a phone this brings up the
+    share sheet; on a computer it copies the link, e.g.
+    `https://yodama.github.io/haleyarahart/#untitled-iv`, which opens the
+    site with that painting in the viewer.
+  - A section: `…/haleyarahart/#work`, `#info` or `#contact` opens the
+    page at that section. On a computer, right-click Work, Info or Contact
+    in the menu and choose Copy Link.
+  - Ordinary visits always start at the top: reloading doesn't jump back
+    down, and clicking the menu doesn't change the address.
 - **Motion, kept small:** the dashed leader lines creep along a pixel at a
   time, a painting's FIG line runs while you hover it, and the clock's
   colon blinks. Every so often a line-drawn satellite drifts across behind

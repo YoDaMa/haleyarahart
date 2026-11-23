@@ -304,6 +304,38 @@
     });
   });
 
+  /* -- sharing: the phone's share sheet, or the link copied */
+
+  var toast = viewer.querySelector('[data-toast]'), toastTimer = 0;
+  function say(msg) {
+    toast.textContent = msg;
+    viewer.classList.add('has-toast');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { viewer.classList.remove('has-toast'); toast.textContent = ''; }, 2400);
+  }
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+    return new Promise(function (resolve, reject) {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      viewer.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand('copy'); } catch (err) { /* not allowed */ }
+      ta.remove();
+      if (ok) resolve(); else reject();
+    });
+  }
+  function share() {
+    var work = works[index];
+    var url = location.origin + location.pathname + '#' + work.id;
+    var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (navigator.share && touch) {
+      navigator.share({ title: work.title + ' — ' + artist, url: url }).catch(function () {});
+      return;
+    }
+    copyText(url).then(function () { say('Link copied'); }, function () { say(url); });
+  }
+
   /* -- looking closer */
 
   var zoomed = false, fit = null, origin = { x: 0.5, y: 0.5 }, z = 2;
@@ -371,6 +403,7 @@
     if (t.closest('[data-prev]')) { go(-1); return; }
     if (t.closest('[data-next]')) { go(1); return; }
     if (t.closest('[data-zoom]')) { setZoom(!zoomed); return; }
+    if (t.closest('[data-share]')) { share(); return; }
     if (moved) return;                      // that was a drag or a swipe, not a click
     if (t === img) {
       if (zoomed) { setZoom(false); return; }

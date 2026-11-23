@@ -546,6 +546,13 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   transition: opacity 0.3s;
 }
 .viewer.is-loading .viewer__status { opacity: 1; }
+.viewer__toast {
+  margin-left: 16px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.viewer.has-toast .viewer__toast { opacity: 1; }
+.viewer.has-toast .viewer__status { display: none; }
 .viewer__tools { display: flex; gap: 10px; }
 
 /* The picture is sized from the painting's proportions (--ar, set by
@@ -743,6 +750,9 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 
 @media (max-width: 380px) {
   .row { flex-wrap: wrap; row-gap: 8px; }
+  .viewer__tools { gap: 6px; }
+  .viewer__bar .btn { padding: 7px 8px; }
+  .viewer__count { font-size: 0.75rem; }
 }
 
 /* ---------------------------------------------------------------- Print */

@@ -47,11 +47,12 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <script>
     document.documentElement.classList.add('js');
-    // Always start at the top: no jumping back to where a reload left off,
-    // and no landing mid-page from a section link (#info, #contact) left in
-    // the address bar. Links to a painting (#untitled-iv) still open it.
+    // Start at the top: no jumping back to where a reload left off, and menu
+    // clicks don't leave #info etc. in
+    // the address bar. Shared links still work: a painting (#untitled-iv)
+    // opens in the viewer, and #work, #info and #contact open that section.
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    if (location.hash && !/^#untitled-/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
+    if (location.hash && !/^#(untitled-[\w-]+|work|info|contact)$/.test(location.hash)) history.replaceState(null, '', location.pathname + location.search);
   </script>
   <script defer src="assets/js/main.js"></script>
 </head>
@@ -299,8 +300,9 @@
   <!-- Full-screen view of one painting (opened by assets/js/main.js) -->
   <dialog class="viewer" aria-label="Painting viewer">
     <div class="viewer__bar">
-      <p class="viewer__count"><span data-count></span><span class="viewer__status" aria-hidden="true">Loading</span></p>
+      <p class="viewer__count"><span data-count></span><span class="viewer__status" aria-hidden="true">Loading</span><span class="viewer__toast" role="status" data-toast></span></p>
       <div class="viewer__tools">
+        <button class="btn" type="button" data-share title="Share a link to this painting">Share</button>
         <button class="btn" type="button" data-zoom aria-pressed="false" title="Zoom in on the surface (Z)">Zoom</button>
         <button class="btn" type="button" data-close autofocus>Close <span aria-hidden="true">×</span></button>
       </div>
