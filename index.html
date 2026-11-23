@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Haley Pannell — Paintings</title>
-  <meta name="description" content="Haley Pannell makes abstract paintings out of thousands of small, thick marks of paint.">
-  <meta name="theme-color" content="#f6f4ef">
-  <meta name="color-scheme" content="light">
+  <meta name="description" content="Paintings by Haley Pannell.">
+  <meta name="theme-color" content="#2c4c91">
+  <meta name="color-scheme" content="dark">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Haley Pannell — Paintings">
-  <meta property="og:description" content="Abstract paintings made from thousands of small, thick marks of paint.">
+  <meta property="og:description" content="Paintings by Haley Pannell.">
   <meta property="og:image" content="assets/img/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -20,117 +20,141 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Fragment+Mono&family=Nanum+Pen+Script&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Courier+Prime:wght@400;700&display=swap">
   <link rel="stylesheet" href="assets/css/style.css">
   <script defer src="assets/js/main.js"></script>
 </head>
 <body>
-  <header class="top">
-    <a class="top__name" href="#top">Haley Pannell</a>
-    <nav class="top__nav" aria-label="Primary">
-      <a class="taped" href="#work">Work</a>
-      <a class="taped" href="#about">About</a>
-      <a class="taped" href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div class="page">
+    <!-- Title block -->
+    <header class="tb">
+      <a class="tb__cell tb__brand" href="#top" aria-label="Haley Pannell, back to top">
+        <span class="tb__name" aria-hidden="true">HP</span>
+        <span class="tb__sub" aria-hidden="true">Index of paintings</span>
+      </a>
+      <dl class="tb__cell tb__meta">
+        <div><dt>Works</dt><dd data-works>03</dd></div>
+        <div><dt>Time</dt><dd><time data-time>HH:MM</time></dd></div>
+      </dl>
+      <nav class="tb__cell tb__nav" aria-label="Primary">
+        <a href="#work"><span aria-hidden="true">↘</span> Work</a>
+        <a href="#info"><span aria-hidden="true">↘</span> Info</a>
+        <a href="#contact"><span aria-hidden="true">↘</span> Contact</a>
+      </nav>
+    </header>
 
-  <main id="top">
-    <!-- Intro: the first thing people read. -->
-    <section class="intro" aria-labelledby="intro-title">
-      <h1 class="intro__title" id="intro-title">
-        <span class="intro__line">Hi, I’m Haley.</span>
-        <span class="intro__line intro__line--soft">I paint with a lot of paint.<span class="note" aria-hidden="true"><span class="note__text">they’re even thicker<br> in person</span><svg class="note__arrow" viewBox="0 0 80 72"><path pathLength="1" d="M70 4C64 22 50 34 38 40S18 52 13 64M13 64l-1.7-12.8M13 64l10.3-7.9"/></svg></span></span>
-      </h1>
-    </section>
+    <main id="top">
+      <section class="hero" aria-labelledby="name">
+        <p class="row"><span>Paintings</span><i></i><time data-date>DD/MM/YY</time><i></i><span>Index</span></p>
+        <h1 class="hero__name" id="name"><span>Haley</span> <span>Pannell</span></h1>
+      </section>
 
-    <!-- The work.
-         To add a painting: put the photo in assets/img/works/, then copy one
-         <li> below and change the two image paths, width and height (the
-         photo's size in pixels), alt text, title and details. -->
-    <section class="work" id="work" aria-labelledby="work-title">
-      <h2 class="sr-only" id="work-title">Paintings</h2>
-      <ul class="work__list">
-        <li class="piece">
-          <a class="piece__link" href="assets/img/works/01.jpg">
-            <img src="assets/img/works/01.jpg" width="1109" height="1100"
-                 alt="Square painting in thick, crumpled folds of paint: cobalt, teal and slate blue, threaded with deep red and magenta, with flecks of yellow-green.">
-          </a>
-          <h3 class="piece__title"><span class="tape">Untitled I</span></h3>
-          <p class="piece__meta">Oil on canvas</p>
-        </li>
-        <li class="piece">
-          <a class="piece__link" href="assets/img/works/02.jpg">
-            <img src="assets/img/works/02.jpg" width="840" height="1125"
-                 alt="Tall painting covered edge to edge in small, thick dabs of copper, rose, teal, sage and pearl grey, like a field of fallen leaves.">
-          </a>
-          <h3 class="piece__title"><span class="tape">Untitled II</span></h3>
-          <p class="piece__meta">Oil on canvas</p>
-        </li>
-        <li class="piece">
-          <a class="piece__link" href="assets/img/works/03.jpg">
-            <img src="assets/img/works/03.jpg" width="854" height="1125"
-                 alt="Tall painting of countless thick strokes in silver-white, sky blue, coral and ochre, brightest in the middle, like sunlight through trees.">
-          </a>
-          <h3 class="piece__title"><span class="tape">Untitled III</span></h3>
-          <p class="piece__meta">Oil on canvas</p>
-        </li>
-      </ul>
-    </section>
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="row"><h2 id="work-title">Work</h2><i></i><span>Fig. <span data-fig-range>01–03</span></span><i></i><span aria-hidden="true">↓</span></div>
 
-    <section class="about" id="about" aria-labelledby="about-title">
-      <figure class="snapshot">
-        <div class="snapshot__photo">
-          <div class="snapshot__crop">
-            <img src="assets/img/works/01.jpg" width="1109" height="1100" loading="lazy"
-                 alt="Close-up of the paint surface: thick ridges and folds of blue, green, red and yellow.">
+        <!-- To add a painting: put the photo in assets/img/works/, then copy one
+             <li> below and change both image paths, the width and height (the
+             photo's size in pixels), the alt text, title and details.
+             Figure numbers and counts update on their own. -->
+        <ul class="plates">
+          <li class="piece">
+            <a class="piece__link" href="assets/img/works/01.jpg">
+              <span class="plate"><img src="assets/img/works/01.jpg" width="1109" height="1100"
+                alt="Square painting: dense folds of cobalt, teal and slate blue paint, threaded with deep red and magenta, with flecks of yellow-green."></span>
+            </a>
+            <div class="piece__caption">
+              <p class="piece__fig"><i></i></p>
+              <h3 class="piece__title">Untitled I</h3>
+              <p class="piece__meta">Oil on canvas</p>
+            </div>
+          </li>
+          <li class="piece">
+            <a class="piece__link" href="assets/img/works/02.jpg">
+              <span class="plate"><img src="assets/img/works/02.jpg" width="840" height="1125"
+                alt="Tall painting covered edge to edge in small marks of copper, rose, teal, sage and pearl grey."></span>
+            </a>
+            <div class="piece__caption">
+              <p class="piece__fig"><i></i></p>
+              <h3 class="piece__title">Untitled II</h3>
+              <p class="piece__meta">Oil on canvas</p>
+            </div>
+          </li>
+          <li class="piece">
+            <a class="piece__link" href="assets/img/works/03.jpg">
+              <span class="plate"><img src="assets/img/works/03.jpg" width="854" height="1125"
+                alt="Tall painting of many small strokes in silver-white, sky blue, coral and ochre, lightest at the center."></span>
+            </a>
+            <div class="piece__caption">
+              <p class="piece__fig"><i></i></p>
+              <h3 class="piece__title">Untitled III</h3>
+              <p class="piece__meta">Oil on canvas</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="info" id="info" aria-labelledby="info-title">
+        <div class="row"><h2 id="info-title">Info</h2><i></i><span>Haley Pannell</span><i></i><span>Painter</span></div>
+
+        <div class="info__grid">
+          <!-- A close-up of one painting. The small key shows where it comes from.
+               To move it, change transform-origin and scale on .detail__crop img
+               (assets/css/style.css) and the matching box on .detail__key i. -->
+          <figure class="detail">
+            <span class="plate"><span class="detail__crop">
+              <img src="assets/img/works/01.jpg" width="1109" height="1100" loading="lazy"
+                   alt="Detail of Untitled I, seen close up.">
+            </span></span>
+            <figcaption class="detail__caption">
+              <span class="detail__key" aria-hidden="true"><img src="assets/img/works/01.jpg" alt=""><i></i></span>
+              <span>Detail A<br>Untitled I</span>
+            </figcaption>
+          </figure>
+
+          <div class="info__body">
+            <p class="info__text">This site is an index of selected paintings. For available work, commissions or a studio visit, please get in touch.</p>
+            <dl class="spec">
+              <div><dt>Practice</dt><dd>Painting</dd></div>
+              <div><dt>Works</dt><dd data-works>03</dd></div>
+              <!-- TODO: replace hello@example.com (twice on the next line). -->
+              <div><dt>Email</dt><dd><a href="mailto:hello@example.com">hello@example.com</a></dd></div>
+              <!-- Add rows the same way, for example:
+              <div><dt>Based in</dt><dd>City, Country</dd></div>
+              <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/your-handle/">@your-handle</a></dd></div>
+              -->
+            </dl>
           </div>
-          <span class="snapshot__tape snapshot__tape--left" aria-hidden="true"></span>
-          <span class="snapshot__tape snapshot__tape--right" aria-hidden="true"></span>
         </div>
-        <figcaption class="snapshot__note">up close, Untitled I</figcaption>
-      </figure>
+      </section>
 
-      <div class="about__text">
-        <h2 class="about__title" id="about-title">About</h2>
-        <p class="about__lead">I make abstract paintings out of thousands of small, thick marks of paint, put down one at a time until the whole canvas is covered.</p>
-        <p>Up close you can see every mark — a fleck of blue, a fold of red, a curl of silver. From across the room they blend into something more like weather: leaves, water, a reef, sun through trees.</p>
-        <p>The surface changes as you walk past it, so the paintings are best seen in person.</p>
-      </div>
-    </section>
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="row"><h2 id="contact-title">Contact</h2><i></i><span>Inquiries</span><i></i><span aria-hidden="true">↗</span></div>
+        <!-- TODO: replace hello@example.com (twice on the next line). -->
+        <a class="contact__email" href="mailto:hello@example.com">hello@example.com</a>
+      </section>
+    </main>
 
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <h2 class="contact__title" id="contact-title">Say hello.</h2>
-      <p class="contact__lede">For available work, commissions or a studio visit, email me at</p>
-      <!-- TODO: replace hello@example.com (in both places on the next line) with the real address. -->
-      <a class="contact__email taped" href="mailto:hello@example.com">hello@example.com</a>
-      <!-- To add Instagram, uncomment and edit:
-      <p class="contact__more"><a class="taped" href="https://www.instagram.com/your-handle/" rel="me noopener" target="_blank">Instagram ↗</a></p>
-      -->
-    </section>
-  </main>
+    <footer class="foot">
+      <span>© <span data-year>2026</span> Haley Pannell</span>
+      <span>All works © the artist</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </div>
 
-  <footer class="foot">
-    <span>© <span data-year>2026</span> Haley Pannell</span>
-    <a class="taped" href="#top">Back to top ↑</a>
-  </footer>
-
-  <!-- Full-screen view of one painting (opened by assets/js/main.js). -->
+  <!-- Full-screen view of one painting (opened by assets/js/main.js) -->
   <dialog class="viewer" aria-label="Painting viewer">
     <div class="viewer__bar">
-      <span class="viewer__count" data-count></span>
-      <button class="viewer__btn" type="button" data-close>Close <span aria-hidden="true">×</span></button>
+      <span data-count></span>
+      <button class="btn" type="button" data-close>Close <span aria-hidden="true">×</span></button>
     </div>
     <div class="viewer__stage" data-stage>
-      <img class="viewer__img" alt="" data-img>
+      <span class="plate"><img class="viewer__img" alt="" data-img></span>
     </div>
     <div class="viewer__bar viewer__bar--bottom">
-      <div>
-        <p class="viewer__title"><span class="tape" data-title></span></p>
-        <p class="viewer__meta" data-meta></p>
-      </div>
+      <p class="viewer__caption"><span class="viewer__title" data-title></span><span data-meta></span></p>
       <div class="viewer__nav">
-        <button class="viewer__btn" type="button" data-prev><span aria-hidden="true">←</span> Prev</button>
-        <button class="viewer__btn" type="button" data-next>Next <span aria-hidden="true">→</span></button>
+        <button class="btn" type="button" data-prev><span aria-hidden="true">←</span> Prev</button>
+        <button class="btn" type="button" data-next>Next <span aria-hidden="true">→</span></button>
       </div>
     </div>
   </dialog>

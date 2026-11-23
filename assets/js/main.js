@@ -1,10 +1,32 @@
-/* Opens a painting full screen when it's clicked. Without JavaScript the
-   same links simply open the image file. */
+/* Small live details (date, time, counts) and the full-screen viewer.
+   Without JavaScript the page still reads fine and each painting opens as
+   a plain image. */
 (function () {
   'use strict';
 
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function each(selector, fn) { Array.prototype.forEach.call(document.querySelectorAll(selector), fn); }
+
+  /* ----------------------------------------------------------- the sheet */
+
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = new Date().getFullYear();
+
+  var pieces = document.querySelectorAll('.piece');
+  each('[data-works]', function (el) { el.textContent = pad(pieces.length); });
+  each('[data-fig-range]', function (el) { el.textContent = '01–' + pad(pieces.length); });
+
+  function tick() {
+    var now = new Date();
+    var date = pad(now.getDate()) + '/' + pad(now.getMonth() + 1) + '/' + String(now.getFullYear()).slice(-2);
+    var time = pad(now.getHours()) + ':' + pad(now.getMinutes());
+    each('[data-date]', function (el) { el.textContent = date; el.dateTime = now.toISOString().slice(0, 10); });
+    each('[data-time]', function (el) { el.textContent = time; });
+  }
+  tick();
+  setTimeout(function () { tick(); setInterval(tick, 60000); }, (60 - new Date().getSeconds()) * 1000);
+
+  /* ---------------------------------------------------------- the viewer */
 
   var viewer = document.querySelector('.viewer');
   var links = Array.prototype.slice.call(document.querySelectorAll('.piece__link'));
@@ -17,9 +39,7 @@
   var count = viewer.querySelector('[data-count]');
   var index = 0;
 
-  function text(el) {
-    return el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
-  }
+  function text(el) { return el ? el.textContent.replace(/\s+/g, ' ').trim() : ''; }
 
   var works = links.map(function (link) {
     var piece = link.closest('.piece');
@@ -39,7 +59,7 @@
     img.alt = work.alt;
     title.textContent = work.title;
     meta.textContent = work.meta;
-    count.textContent = (index + 1) + ' / ' + works.length;
+    count.textContent = 'Fig. ' + pad(index + 1) + ' / ' + pad(works.length);
     new Image().src = works[(index + 1) % works.length].src; // have the next one ready
   }
 
