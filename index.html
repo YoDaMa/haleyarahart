@@ -44,7 +44,7 @@
 
   <link rel="preload" href="assets/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/courier-prime.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261123e">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261123f">
   <script>
     document.documentElement.classList.add('js');
     // Start at the top: no jumping back to where a reload left off, and menu
@@ -75,7 +75,7 @@
       window.addEventListener('load', function () { toSection(); setTimeout(toSection, 0); });
     }
   </script>
-  <script defer src="assets/js/main.js?v=20261123e"></script>
+  <script defer src="assets/js/main.js?v=20261123f"></script>
 </head>
 <body>
   <a class="skip" href="#work">Skip to the work</a>
@@ -325,7 +325,7 @@
       <div class="viewer__tools">
         <button class="btn" type="button" data-share title="Share a link to this painting">Share</button>
         <button class="btn" type="button" data-zoom aria-pressed="false" title="Zoom in on the surface (Z)">Zoom</button>
-        <button class="btn" type="button" data-close autofocus>Close <span aria-hidden="true">×</span></button>
+        <button class="btn" type="button" data-close autofocus aria-label="Close"><span class="btn__word">Close </span><span aria-hidden="true">×</span></button>
       </div>
     </div>
     <div class="viewer__stage" data-stage>

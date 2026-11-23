@@ -503,17 +503,24 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   padding: 0;
   border: 0;
   overflow: hidden;
-  background: var(--blue) url("../img/grain.png") repeat;
-  background-size: 128px;
+  /* A plain white wall for the painting; the sheet's blue becomes the ink */
+  --white: #2c4c91;
+  --blue: #fff;
+  --blue-2: #eef0f4;
+  --dim: rgb(44 76 145 / 0.82);
+  --rule: rgb(44 76 145 / 0.55);
+  --dash: 1px dashed var(--rule);
+  background: #fff;
   color: var(--white);
   font-family: var(--mono);
 }
+.viewer .plate { --c: rgb(44 76 145 / 0.7); }
 .viewer[open] {
   display: flex;
   flex-direction: column;
   animation: fade-in 0.25s var(--ease);
 }
-.viewer::backdrop { background: var(--blue); }
+.viewer::backdrop { background: #fff; }
 
 .viewer__bar {
   display: flex;
@@ -528,7 +535,8 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   align-items: flex-end;
   padding: 14px var(--gutter) calc(18px + env(safe-area-inset-bottom));
 }
-.viewer__count { margin: 0; }
+.viewer__count { margin: 0; white-space: nowrap; }
+.viewer .btn { white-space: nowrap; }
 .viewer__stage {
   flex: 1;
   min-height: 0;
@@ -539,19 +547,22 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   overflow: hidden;
   touch-action: pan-y pinch-zoom;
 }
-.viewer__status {
-  margin-left: 16px;
+/* "Loading" and "Link copied" sit under the count and take no room until shown */
+.viewer__count { position: relative; }
+.viewer__status,
+.viewer__toast {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 4px;
+  font-size: 0.75rem;
   color: var(--dim);
   opacity: 0;
   transition: opacity 0.3s;
+  pointer-events: none;
 }
 .viewer.is-loading .viewer__status { opacity: 1; }
-.viewer__toast {
-  margin-left: 16px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.viewer.has-toast .viewer__toast { opacity: 1; }
+.viewer.has-toast .viewer__toast { opacity: 1; color: var(--white); }
 .viewer.has-toast .viewer__status { display: none; }
 .viewer__tools { display: flex; gap: 10px; }
 
@@ -722,6 +733,9 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   .piece__link { aspect-ratio: auto; container-type: inline-size; justify-content: flex-start; }
   .piece .plate img { max-height: 72svh; }
   .viewer__bar--bottom { flex-direction: column; align-items: stretch; gap: 14px; }
+  .viewer__bar { gap: 10px; }
+  .viewer__tools { gap: 8px; }
+  .btn__word { display: none; }          /* Close shows just × on phones */
   .viewer__nav { justify-content: space-between; }
   .viewer__img {
     width: min(100vw - 2 * var(--gutter) - 24px, (100vh - 236px) * var(--ar, 0.8));

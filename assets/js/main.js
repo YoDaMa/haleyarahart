@@ -401,6 +401,13 @@
   }
 
   // Every way of closing (button, Esc, clicking outside, Back) ends here
+  // The browser's own bars match the viewer's white wall while it's open
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  var themeColor = themeMeta && themeMeta.content;
+  new MutationObserver(function () {
+    if (themeMeta) themeMeta.content = viewer.open ? '#ffffff' : themeColor;
+  }).observe(viewer, { attributes: true, attributeFilter: ['open'] });
+
   viewer.addEventListener('close', function () {
     setZoom(false);
     token++;
