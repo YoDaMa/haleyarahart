@@ -521,6 +521,10 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   animation: fade-in 0.25s var(--ease);
 }
 .viewer::backdrop { background: #fff; }
+/* Quick taps on Prev / Next must not count as Safari's double-tap-to-zoom,
+   which zoomed the whole page in. Pinch-zoom still works. */
+.viewer,
+.btn { touch-action: manipulation; }
 
 .viewer__bar {
   display: flex;
