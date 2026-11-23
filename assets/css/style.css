@@ -641,6 +641,25 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 /* Now and then a satellite drifts across behind the sheet, leaving a dashed
    trail, or a meteor streaks past. Added by assets/js/main.js. */
 
+/* The halftone screen (drawn by main.js): fixed behind everything, scaled up
+   2x with hard pixel edges, fading in once its first frame is ready. */
+.halftone {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+.halftone.is-on { opacity: 1; }
+.halftone canvas {
+  display: block;
+  max-width: none;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
 .sky {
   position: fixed;
   inset: 0;
@@ -763,7 +782,7 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   :root { --white: #000; --dim: #444; --rule: #999; --blue: #fff; --blue-2: #eee; }
   html { background: #fff; color-scheme: light; }
   body { color: #000; }
-  .sky, .viewer, .skip, .tb, .hero .row, .contact .row, .foot a { display: none !important; }
+  .sky, .halftone, .viewer, .skip, .tb, .hero .row, .contact .row, .foot a { display: none !important; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js .piece .plate img, .js .detail__crop img { opacity: 1 !important; }
   .plate { --c: #000; }

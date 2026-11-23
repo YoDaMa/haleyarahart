@@ -47,6 +47,16 @@ copy only labels things. It never describes the work.
   the content, leaving a fading dashed trail, and now and then a shooting
   star streaks past. All of it switches off when a visitor has reduced
   motion turned on.
+- **Halftone:** a printed halftone screen lies under everything: dark
+  1-bit dots on a 9-point grid, sized by slowly drifting clouds. Small dots
+  are single pixels and crosses; the biggest are stepped circles that just
+  touch, forming + shapes. The clouds swell and shrink on a slow breath,
+  one every 9 seconds. It's drawn by the graphics card at 15 frames a
+  second, pauses while the viewer is open, holds still with reduced motion,
+  and is skipped on devices without graphics acceleration (and in print).
+  To adjust it, see `the halftone` in `assets/js/main.js`: dot size and
+  spacing (`CELL`, `RMAX`), pixel size (`PX`), the breath (`BREATH`) and the
+  ink strength (`A`).
 - **Detail A** is a close-up of one painting at the photo's full
   resolution, with a small key showing where it comes from.
 - **Printing** the page (or saving it as a PDF) gives a plain catalog on
@@ -140,7 +150,7 @@ change `<base href="/haleyarahart/">` in `404.html` to `<base href="/">`.
 index.html                 all the content
 404.html                   the page shown for a missing address
 assets/css/style.css       the design
-assets/js/main.js          live date and time, moon, counts, sky sprites, viewer
+assets/js/main.js          live date and time, moon, counts, halftone, sky sprites, viewer
 assets/fonts/              Inter Tight and Courier Prime, with their licenses
 assets/img/works/          the paintings: NN.jpg full size, NN-1000.jpg and NN-640.jpg for the grid
 assets/img/detail-a*.jpg   the close-up in Info
