@@ -58,7 +58,7 @@ Everything a visitor reads is in **`index.html`**.
 | --- | --- |
 | Painting titles and details | each `<li class="piece">`. **The titles (Untitled I–IX) are placeholders.** Each work's details read "Mixed media on canvas"; add size and year if you like, e.g. `Mixed media on canvas, 24 × 30 in, 2025`. |
 | About text | `.info__text`, and the rows of the `.spec` table (practice, medium, location, contact). A CV row example is in a comment. |
-| Email, phone, Instagram | the Info table and the Contact section (both places). |
+| Email, Instagram | the Info table and the Contact section (both places). |
 | Taglines | the first row above the name (`row--tags`). |
 
 Figure numbers, the "Fig. 01–09" range and the works count update
