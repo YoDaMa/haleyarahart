@@ -1,36 +1,58 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Haley Pannell — Paintings</title>
-  <meta name="description" content="Paintings by Haley Pannell.">
+  <meta name="description" content="Haley Pannell is a painter. Selected paintings, information and contact.">
   <meta name="theme-color" content="#2c4c91">
   <meta name="color-scheme" content="dark">
 
+  <!-- The site's public address. If it moves to its own domain, change it
+       here and in og:url and og:image below. -->
+  <link rel="canonical" href="https://yodama.github.io/haleyarahart/">
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Haley Pannell">
   <meta property="og:title" content="Haley Pannell — Paintings">
-  <meta property="og:description" content="Paintings by Haley Pannell.">
-  <meta property="og:image" content="assets/img/og.jpg">
+  <meta property="og:description" content="Selected paintings by Haley Pannell.">
+  <meta property="og:url" content="https://yodama.github.io/haleyarahart/">
+  <meta property="og:image" content="https://yodama.github.io/haleyarahart/assets/img/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Haley Pannell, paintings, shown on a blue sheet.">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Courier+Prime:wght@400;700&display=swap">
+  <!-- Tells search engines who this site is about -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Haley Pannell",
+    "jobTitle": "Painter",
+    "url": "https://yodama.github.io/haleyarahart/",
+    "image": "https://yodama.github.io/haleyarahart/assets/img/og.jpg"
+  }
+  </script>
+
+  <link rel="preload" href="assets/fonts/inter-tight.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/courier-prime.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
   <script defer src="assets/js/main.js"></script>
 </head>
 <body>
-  <div class="page">
+  <a class="skip" href="#work">Skip to the work</a>
+
+  <div class="page" id="top">
     <!-- Title block -->
     <header class="tb">
-      <a class="tb__cell tb__brand" href="#top" aria-label="Haley Pannell, back to top">
-        <span class="tb__name" aria-hidden="true">HP</span>
-        <span class="tb__sub" aria-hidden="true">Index of paintings</span>
+      <a class="tb__cell tb__brand" href="#top">
+        <span class="tb__name">HP<span class="sr-only"> — Haley Pannell</span></span>
+        <span class="tb__sub">Index of paintings</span>
       </a>
       <div class="tb__cell tb__meta">
         <!-- Moonphase dial, set to today's moon by assets/js/main.js -->
@@ -54,7 +76,7 @@
           <path class="moon__line" d="M5 30a27 27 0 0 1 54 0M28 30h8"/>
         </svg>
         <dl>
-          <div><dt>Time</dt><dd><time data-time>HH:MM</time></dd></div>
+          <div><dt>Time</dt><dd><time data-time>--:--</time></dd></div>
         </dl>
       </div>
       <nav class="tb__cell tb__nav" aria-label="Primary">
@@ -64,25 +86,26 @@
       </nav>
     </header>
 
-    <main id="top">
+    <main>
       <section class="hero" aria-labelledby="name">
-        <p class="row"><span>Paintings</span><i></i><time data-date>DD/MM/YY</time><i></i><span>Index</span></p>
+        <p class="row"><span>Paintings</span><i></i><time data-date>2026</time><i></i><span>Index</span></p>
         <h1 class="hero__name" id="name"><span>Haley</span> <span>Pannell</span></h1>
       </section>
 
       <section class="work" id="work" aria-labelledby="work-title">
         <div class="row"><h2 id="work-title">Work</h2><i></i><span>Fig. <span data-fig-range>01–09</span></span><i></i><span aria-hidden="true">↓</span></div>
 
-        <!-- To add a painting: put the photo in assets/img/works/, then copy one
-             <li> below and change both image paths, the width and height (the
-             photo's size in pixels), the alt text, title and details.
-             The link opens the full-size photo; the <img> can be the same file
-             or a smaller copy (like 04-sm.jpg) so the grid loads faster.
-             Figure numbers and counts update on their own. -->
+        <!-- To add a painting, run:  python3 tools/prepare-painting.py photo.jpg 10
+             It makes the image files and prints a <li> to paste below.
+             Each <li> needs a unique id (it becomes the link to that work,
+             e.g. …/#untitled-iv). Figure numbers and counts update on their own. -->
         <ul class="plates">
-          <li class="piece">
+          <li class="piece" id="untitled-i">
             <a class="piece__link" href="assets/img/works/01.jpg">
-              <span class="plate"><img src="assets/img/works/01.jpg" width="1109" height="1100"
+              <span class="plate"><img src="assets/img/works/01-1000.jpg"
+                srcset="assets/img/works/01-640.jpg 640w, assets/img/works/01-1000.jpg 1000w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 1.008)), (max-width: 1000px) 45vw, (min-width: 1680px) 500px, 30vw"
+                width="1000" height="992" fetchpriority="high" decoding="async"
                 alt="Square painting: dense folds of cobalt, teal and slate blue paint, threaded with deep red and magenta, with flecks of yellow-green."></span>
             </a>
             <div class="piece__caption">
@@ -91,9 +114,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-ii">
             <a class="piece__link" href="assets/img/works/02.jpg">
-              <span class="plate"><img src="assets/img/works/02.jpg" width="840" height="1125"
+              <span class="plate"><img src="assets/img/works/02-1000.jpg"
+                srcset="assets/img/works/02-640.jpg 478w, assets/img/works/02-1000.jpg 747w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.747)), (max-width: 1000px) calc(45vw * 0.934), (min-width: 1680px) calc(500px * 0.934), calc(30vw * 0.934)"
+                width="747" height="1000" loading="lazy" decoding="async"
                 alt="Tall painting covered edge to edge in small marks of copper, rose, teal, sage and pearl grey."></span>
             </a>
             <div class="piece__caption">
@@ -102,9 +128,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-iii">
             <a class="piece__link" href="assets/img/works/03.jpg">
-              <span class="plate"><img src="assets/img/works/03.jpg" width="854" height="1125"
+              <span class="plate"><img src="assets/img/works/03-1000.jpg"
+                srcset="assets/img/works/03-640.jpg 486w, assets/img/works/03-1000.jpg 759w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.759)), (max-width: 1000px) calc(45vw * 0.949), (min-width: 1680px) calc(500px * 0.949), calc(30vw * 0.949)"
+                width="759" height="1000" loading="lazy" decoding="async"
                 alt="Tall painting of many small strokes in silver-white, sky blue, coral and ochre, lightest at the center."></span>
             </a>
             <div class="piece__caption">
@@ -113,9 +142,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-iv">
             <a class="piece__link" href="assets/img/works/04.jpg">
-              <span class="plate"><img src="assets/img/works/04-sm.jpg" width="326" height="1000" loading="lazy" decoding="async"
+              <span class="plate"><img src="assets/img/works/04-1000.jpg"
+                srcset="assets/img/works/04-640.jpg 209w, assets/img/works/04-1000.jpg 326w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.326)), (max-width: 1000px) calc(45vw * 0.408), (min-width: 1680px) calc(500px * 0.408), calc(30vw * 0.408)"
+                width="326" height="1000" loading="lazy" decoding="async"
                 alt="Tall, narrow painting covered in thick, crumpled paint: sky blue, coral, yellow-green, deep red, violet and silver."></span>
             </a>
             <div class="piece__caption">
@@ -124,9 +156,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-v">
             <a class="piece__link" href="assets/img/works/05.jpg">
-              <span class="plate"><img src="assets/img/works/05-sm.jpg" width="794" height="1000" loading="lazy" decoding="async"
+              <span class="plate"><img src="assets/img/works/05-1000.jpg"
+                srcset="assets/img/works/05-640.jpg 508w, assets/img/works/05-1000.jpg 794w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.794)), (max-width: 1000px) calc(45vw * 0.993), (min-width: 1680px) calc(500px * 0.993), calc(30vw * 0.993)"
+                width="794" height="1000" loading="lazy" decoding="async"
                 alt="Painting covered in thick, crumpled paint in silver, sky blue, ochre gold, green and pink."></span>
             </a>
             <div class="piece__caption">
@@ -135,9 +170,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-vi">
             <a class="piece__link" href="assets/img/works/06.jpg">
-              <span class="plate"><img src="assets/img/works/06-sm.jpg" width="999" height="1000" loading="lazy" decoding="async"
+              <span class="plate"><img src="assets/img/works/06-1000.jpg"
+                srcset="assets/img/works/06-640.jpg 640w, assets/img/works/06-1000.jpg 999w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.999)), (max-width: 1000px) 45vw, (min-width: 1680px) 500px, 30vw"
+                width="999" height="1000" loading="lazy" decoding="async"
                 alt="Square painting of thick swirls and crumpled marks in silver, gold, plum, black and turquoise."></span>
             </a>
             <div class="piece__caption">
@@ -146,9 +184,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-vii">
             <a class="piece__link" href="assets/img/works/07.jpg">
-              <span class="plate"><img src="assets/img/works/07-sm.jpg" width="800" height="1000" loading="lazy" decoding="async"
+              <span class="plate"><img src="assets/img/works/07-1000.jpg"
+                srcset="assets/img/works/07-640.jpg 512w, assets/img/works/07-1000.jpg 800w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.800)), (max-width: 1000px) 45vw, (min-width: 1680px) 500px, 30vw"
+                width="800" height="1000" loading="lazy" decoding="async"
                 alt="Painting covered in thick, crumpled paint in violet, cobalt, yellow-green, orange and silver."></span>
             </a>
             <div class="piece__caption">
@@ -157,9 +198,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-viii">
             <a class="piece__link" href="assets/img/works/08.jpg">
-              <span class="plate"><img src="assets/img/works/08-sm.jpg" width="780" height="1000" loading="lazy" decoding="async"
+              <span class="plate"><img src="assets/img/works/08-1000.jpg"
+                srcset="assets/img/works/08-640.jpg 499w, assets/img/works/08-1000.jpg 780w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.780)), (max-width: 1000px) calc(45vw * 0.975), (min-width: 1680px) calc(500px * 0.975), calc(30vw * 0.975)"
+                width="780" height="1000" loading="lazy" decoding="async"
                 alt="Painting of thick, crumpled paint in red, teal, slate blue, black and silver."></span>
             </a>
             <div class="piece__caption">
@@ -168,9 +212,12 @@
               <p class="piece__meta">Oil on canvas</p>
             </div>
           </li>
-          <li class="piece">
+          <li class="piece" id="untitled-ix">
             <a class="piece__link" href="assets/img/works/09.jpg">
-              <span class="plate"><img src="assets/img/works/09-sm.jpg" width="503" height="1000" loading="lazy" decoding="async"
+              <span class="plate"><img src="assets/img/works/09-1000.jpg"
+                srcset="assets/img/works/09-640.jpg 322w, assets/img/works/09-1000.jpg 503w"
+                sizes="(max-width: 600px) min(calc(100vw - 56px), calc(72vh * 0.503)), (max-width: 1000px) calc(45vw * 0.629), (min-width: 1680px) calc(500px * 0.629), calc(30vw * 0.629)"
+                width="503" height="1000" loading="lazy" decoding="async"
                 alt="Tall painting covered in thick, crumpled paint in turquoise, cobalt, silver, coral and lilac."></span>
             </a>
             <div class="piece__caption">
@@ -186,17 +233,19 @@
         <div class="row"><h2 id="info-title">Info</h2><i></i><span>Haley Pannell</span><i></i><span>Painter</span></div>
 
         <div class="info__grid">
-          <!-- A close-up of one painting. The small key shows where it comes from.
-               To move it, change transform-origin and scale on .detail__crop img
-               (assets/css/style.css) and the matching box on .detail__key i. -->
+          <!-- A close-up at the photo's full resolution (assets/img/detail-a.jpg).
+               The small key shows where it sits in the painting; its box is
+               set on .detail__key i in assets/css/style.css. -->
           <figure class="detail">
             <span class="plate"><span class="detail__crop">
-              <img src="assets/img/works/01.jpg" width="1109" height="1100" loading="lazy"
-                   alt="Detail of Untitled I, seen close up.">
+              <img src="assets/img/detail-a.jpg" srcset="assets/img/detail-a-480.jpg 480w, assets/img/detail-a.jpg 800w"
+                   sizes="(max-width: 900px) min(396px, calc(100vw - 56px)), (min-width: 1680px) 472px, 28vw"
+                   width="800" height="800" loading="lazy" decoding="async"
+                   alt="Detail of Untitled V: thick ridges of gold, green, blue and silver paint.">
             </span></span>
             <figcaption class="detail__caption">
-              <span class="detail__key" aria-hidden="true"><img src="assets/img/works/01.jpg" alt=""><i></i></span>
-              <span>Detail A<br>Untitled I</span>
+              <span class="detail__key" aria-hidden="true"><img src="assets/img/works/05-640.jpg" width="508" height="640" loading="lazy" decoding="async" alt=""><i></i></span>
+              <span>Detail A<br>Untitled V</span>
             </figcaption>
           </figure>
 
@@ -210,6 +259,7 @@
               <!-- Add rows the same way, for example:
               <div><dt>Based in</dt><dd>City, Country</dd></div>
               <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/your-handle/">@your-handle</a></dd></div>
+              <div><dt>CV</dt><dd><a href="assets/cv.pdf">Download (PDF)</a></dd></div>
               -->
             </dl>
           </div>
@@ -233,11 +283,14 @@
   <!-- Full-screen view of one painting (opened by assets/js/main.js) -->
   <dialog class="viewer" aria-label="Painting viewer">
     <div class="viewer__bar">
-      <span data-count></span>
-      <button class="btn" type="button" data-close>Close <span aria-hidden="true">×</span></button>
+      <p class="viewer__count"><span data-count></span><span class="viewer__status" aria-hidden="true">Loading</span></p>
+      <div class="viewer__tools">
+        <button class="btn" type="button" data-zoom aria-pressed="false" title="Zoom in on the surface (Z)">Zoom</button>
+        <button class="btn" type="button" data-close autofocus>Close <span aria-hidden="true">×</span></button>
+      </div>
     </div>
     <div class="viewer__stage" data-stage>
-      <span class="plate"><img class="viewer__img" alt="" data-img></span>
+      <span class="plate"><img class="viewer__img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" data-img></span>
     </div>
     <div class="viewer__bar viewer__bar--bottom">
       <p class="viewer__caption"><span class="viewer__title" data-title></span><span data-meta></span></p>
