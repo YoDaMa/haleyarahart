@@ -21,9 +21,11 @@ copy only labels things. It never describes the work.
   section. The date in the first row is the visitor's own date.
 - **The name** is set to fill the width of the sheet exactly, at any screen
   size.
-- **Works** hang at one shared height inside corner brackets, numbered
-  FIG. 01, 02, 03. Click one to see it full screen. Use the arrow keys or
-  swipe to browse, and Esc to close.
+- **Works** sit in a grid of equal 4:5 plates: three across on a laptop,
+  two on a tablet, one on a phone. Each painting is drawn as large as it
+  fits in its plate at its true proportions, inside corner brackets, and
+  numbered FIG. 01, 02, 03 and on. Click one to see it full screen. Use
+  the arrow keys or swipe to browse, and Esc to close.
 - **Motion, kept small:** the dashed leader lines creep along a pixel at a
   time, a painting's FIG line runs while you hover it, and the clock's
   colon blinks. Every so often a line-drawn satellite drifts across behind
@@ -47,16 +49,26 @@ Everything a visitor reads is in **`index.html`**.
 | Info text | `.info__text`, and the rows of the `.spec` table (add rows for location or Instagram; examples are in a comment) |
 | Email | **It's a placeholder (`hello@example.com`).** Replace it in the Info table and in the Contact section, two copies on each line. |
 
-Figure numbers, the "Fig. 01–03" range and the works count update
+Figure numbers, the "Fig. 01–09" range and the works count update
 themselves.
 
 ### Add a painting
 
-1. Put the photo in `assets/img/works/`. A straight-on, evenly lit photo
-   about 2000px on the long side works best.
+1. Crop the photo to just the painting (no wall, frame or easel) and put
+   it in `assets/img/works/`. A straight-on, evenly lit photo about 2000px
+   on the long side works best.
 2. Copy one `<li class="piece">` block in `index.html`. Change both image
    paths (the link and the `<img>`), the `width` and `height` (the photo's
    size in pixels), the `alt` text, the title and the details.
+
+The link opens the full-size photo in the viewer. The `<img>` in the grid
+can point to the same file, or to a smaller copy about 1000px on the long
+side (like `04-sm.jpg`) so the page loads faster.
+
+Works 04–09 were cropped from phone photos and straightened for
+perspective. Their colors are as photographed, and they keep the phones'
+Display P3 color profile, so the paint shows its full color on screens
+that support it.
 
 ### Detail A
 
@@ -85,7 +97,7 @@ branch instead, go to **Settings → Pages**, pick that branch, and choose
 index.html            all the content
 assets/css/style.css  the design
 assets/js/main.js     live date and time, moon phase, counts, sky sprites, viewer
-assets/img/works/     the paintings
+assets/img/works/     the paintings (NN.jpg full size, NN-sm.jpg for the grid)
 assets/img/grain.png  the faint print texture on the blue
 assets/img/og.jpg     preview image for links shared on social media
 favicon.svg

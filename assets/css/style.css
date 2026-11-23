@@ -201,24 +201,27 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 .work { margin-top: clamp(28px, 3.6vw, 52px); }
 
 .plates {
-  --h: min(52vh, 30vw, 600px);        /* every painting hangs at the same height */
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 48px clamp(20px, 2.6vw, 44px);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(44px, 4.6vw, 72px) clamp(20px, 2.6vw, 44px);
   margin: clamp(22px, 2.6vw, 36px) 0 0;
   padding: 0;
   list-style: none;
   counter-reset: fig;
 }
 .piece {
-  flex: none;
-  width: min-content;
+  min-width: 0;
   counter-increment: fig;
   transition: opacity 0.4s var(--ease);
 }
+/* Every work gets the same 4:5 plate, and the painting is drawn as large as
+   it fits inside it, whatever its proportions */
 .piece__link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 5;
+  container-type: size;
   text-decoration: none;
   cursor: zoom-in;
   -webkit-tap-highlight-color: transparent;
@@ -247,8 +250,9 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 
 .piece .plate img {
   width: auto;
-  max-width: none;
-  height: var(--h);
+  height: auto;
+  max-width: calc(100cqw - 24px);     /* the plate's padding holds the brackets */
+  max-height: calc(100cqh - 24px);
   background: var(--blue-2);
 }
 
@@ -570,7 +574,7 @@ h1, h2, h3, p, dl, dd { margin: 0; }
 /* ----------------------------------------------------------- Responsive */
 
 @media (max-width: 1000px) {
-  .plates { --h: min(46vh, 42vw); }
+  .plates { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -600,9 +604,10 @@ h1, h2, h3, p, dl, dd { margin: 0; }
   .tb__cell { padding: 12px 14px; }
   .hero__name { font-size: calc(100cqw / 3.12); white-space: normal; }
   .hero__name span { display: block; }
-  .plates { flex-direction: column; gap: 52px; }
-  .piece { width: 100%; }
-  .piece .plate img { width: 100%; height: auto; }
+  /* one column: each painting at full width, tall ones capped by the screen */
+  .plates { grid-template-columns: minmax(0, 1fr); gap: 52px; }
+  .piece__link { aspect-ratio: auto; container-type: inline-size; justify-content: flex-start; }
+  .piece .plate img { max-height: 72svh; }
   .viewer__bar--bottom { flex-direction: column; align-items: stretch; gap: 14px; }
   .viewer__nav { justify-content: space-between; }
   .viewer__img { max-height: calc(100dvh - 230px); }
